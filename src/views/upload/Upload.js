@@ -55,9 +55,9 @@ export default function UploadImage() {
     }
 
     async function upload(file, idx) {
+        let now = new Date().getTime()
         let formData = new FormData()
         formData.append('Image', file)
-
         const options = {
             method: "post",
             url: "/user/upload",
