@@ -15,7 +15,7 @@ export default function About() {
                         <img src={about} alt="..." />
                     </div>
                     <div className="right">
-                        <div className="topic">Designing Is My Passion</div>
+                        <div className="topic">Programming Is My Passion</div>
                         <p>I'm Nguyen Dong Anh, a fourth year student at HaNoi University of Science.
                             I am very interested in programming and creating things with one's own hands, this website is a example. 
                              A responsive portfolio website created by pure HTML CSS combine with ReactJS

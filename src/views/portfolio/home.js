@@ -9,7 +9,7 @@ export default function Home() {
                 <div className='text'>
                     <div className='text-one'>Hello,</div>
                     <div className='text-two'>I'm Nguyen Dong Anh</div>
-                    <div className='text-three'>Full Stack Developer</div>
+                    <div className='text-three'>Web Developer</div>
                     <div className='text-four'>From VietNam</div>
                     <a href="mailto:nguyendonganh_t62@hus.edu.vn">
                         <div className='button'>

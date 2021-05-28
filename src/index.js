@@ -5,17 +5,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Portfolio from './layout/portfolio'
 import Upload from './views/upload/Upload'
 
-// function NotFound(props) {
-//   console.log(props)
-//   return <h1>404 not found {props.location.pathname}!</h1>;
-// }
-
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <Route exact path="/" component={Portfolio} />
       <Route exact path="/upload" component={Upload} />
-      {/* <Route render={(props)=><NotFound {...props}/>} /> */}
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

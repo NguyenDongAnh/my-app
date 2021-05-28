@@ -84,7 +84,6 @@ export default function UploadImage() {
                 setProgressInfo(_progressInfo)
                 console.log(response.error)
             }
-            console.log(progressInfo)
         }).catch(function (error) {
             console.log(error)
         });
@@ -107,10 +106,10 @@ export default function UploadImage() {
     const onSubmit = () => {
         let preview = document.querySelector(".preview-area .row").querySelectorAll('.card');
         let progress_box = document.querySelector(".progress-box")
-        console.log(progress_box)
         if (fileList.length !== 0) {
             progress_box.classList.add("active")
             fileList.forEach(async (file) => {
+                console.log(file)
                 upload(file, idx)
                 idx++;
             })
@@ -126,27 +125,22 @@ export default function UploadImage() {
         let progress_box = document.querySelector(".progress-box");
         previewArea.addEventListener('dragover', (event) => {
             event.preventDefault();
-            previewArea.style.background = "rgba(0,0,0,0.2)"
+            previewArea.style.background = "rgba(0,0,0,0.7)"
         });
         previewArea.addEventListener('dragleave', (event) => {
             event.preventDefault();
             previewArea.style.background = "#fff"
         });
-        close_button.onclick = () => {
-            setProgressInfo([]);
+        close_button.onclick = async () => {
+            let _progressInfo = await [...progressInfo];
+            _progressInfo = _progressInfo.filter((element)=>{
+                return element.percentage !== 100
+            })
+            setProgressInfo(_progressInfo);
             progress_box.classList.remove('active');
             idx = 0;
         }
-    }, [])
-    //     <div className="alert">
-    //     <div className="alert-content hidden">
-    //         <span className="fas fa-exclamation-circle"></span>
-    //         <span className="msg"></span>
-    //         <span className="close-button">
-    //             <span className="fas fa-times"></span>
-    //         </span>
-    //     </div>
-    // </div>
+    }, [progressInfo])
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>

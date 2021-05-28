@@ -1,6 +1,6 @@
 const multer = require('multer');
 const path = require('path');
-
+const { v4: uuidv4 } = require('uuid');
 function makeid(length) {
     var result = [];
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -22,7 +22,7 @@ function makeid(length) {
 const storageEngine = multer.diskStorage({
     destination: './storage/img/user',
     filename: function (req, file, fn) {
-        fn(null, new Date().getTime().toString() + makeid(10) + path.extname(file.originalname));
+        fn(null, uuidv4() + path.extname(file.originalname));
     }
 });
 
@@ -34,10 +34,12 @@ const uploadPhoto = multer({
     fileFilter: function (req, file, callback) {
         validateFile(file, callback);
     }
-}).array("Image", 100);
+}).array("Image", 10);
 
 var validateFile = function (file, cb) {
     allowedFileTypes = /jpeg|jpg|png|gif|mp3|mp4|pdf/;
+    // allowedFileTypes = /.*/;
+    console.log(path.extname(file.originalname).toLowerCase())
     const extension = allowedFileTypes.test(path.extname(file.originalname).toLowerCase());
     const mimeType = allowedFileTypes.test(file.mimetype);
     if (extension && mimeType) {

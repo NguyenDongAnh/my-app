@@ -5,7 +5,7 @@ import Home from '../views/portfolio/home';
 import About from '../views/portfolio/about';
 import Skill from '../views/portfolio/skill';
 import Contact from '../views/portfolio/contact'
-
+import Project from '../views/portfolio/project'
 export default function Portfolio() {
     // let location = useLocation();
 
@@ -26,7 +26,7 @@ export default function Portfolio() {
                 }
             }
         }, 300);
-        
+
         nav_item.forEach((element) => {
             element.onclick = () => {
                 if (nav_menu.classList.contains('active')) {
@@ -37,7 +37,7 @@ export default function Portfolio() {
             }
         })
 
-        
+
         // SCROLL EVENT
 
         let handleScroll = (element) => {
@@ -49,10 +49,11 @@ export default function Portfolio() {
         let home = document.getElementById('home');
         let about = document.getElementById('about');
         let skills = document.getElementById('skill');
+        let project = document.getElementById('project');
         let contact = document.getElementById('contact');
 
         window.onscroll = () => {
-            if (window.pageYOffset + 660 >= contact.offsetTop) {
+            if (window.pageYOffset + 600 >= contact.offsetTop) {
                 handleScroll(nav_item[4]);
             } else if (window.pageYOffset <= home.offsetTop + home.clientHeight - 65) {
                 handleScroll(nav_item[0]);
@@ -60,6 +61,8 @@ export default function Portfolio() {
                 handleScroll(nav_item[1]);
             } else if (window.pageYOffset <= skills.offsetTop + skills.clientHeight - 65) {
                 handleScroll(nav_item[2]);
+            } else if (window.pageYOffset <= project.offsetTop + project.clientHeight - 65) {
+                handleScroll(nav_item[3]);
             }
         }
 
@@ -88,7 +91,7 @@ export default function Portfolio() {
         return (() => {
             clearInterval(handleResize)
         })
-    })
+    }, [])
 
     return (
         <div>
@@ -99,6 +102,7 @@ export default function Portfolio() {
             <Home />
             <About />
             <Skill />
+            <Project />
             <Contact />
             <div className="overlay"></div>
         </div>
